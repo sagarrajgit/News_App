@@ -17,6 +17,3 @@ News App created using Flutter/Dart and News API for fetching realtime data, hav
 <img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/3.jpg" alt="Search Screen"/>
 <img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/4.jpg" alt="Search Results"/>
 <img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/5.jpg" alt="Web View" />
-
-<!-- #### Demo
-<img src="" width="40%"> -->
