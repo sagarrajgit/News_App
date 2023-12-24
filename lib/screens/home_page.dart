@@ -29,11 +29,11 @@ class _HomePageState extends State<HomePage> {
       for (var element in jsonData['articles']) {
         if (element['title'] != null && element['urlToImage'] != null) {
           final articleModel = Article(
-            name: element['source']['name'] ?? 'name',
-            title: element['title'] ?? 'title',
+            name: element['source']['name'] ?? 'Publisher',
+            title: element['title'] ?? 'Title',
             url: element['url'] ?? 'url',
             urlToImage: element['urlToImage'] ?? 'image',
-            publishedAt: element['publishedAt'] ?? 'time',
+            publishedAt: element['publishedAt'] ?? '00-00-0000',
           );
           news.add(articleModel);
         }
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // Initaila value
+  // Initial value
   String dropDownValue = 'in';
 
   // change dropdown value
@@ -69,6 +69,8 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+
+                // search icon
                 IconButton(
                   alignment: Alignment.centerRight,
                   onPressed: () {
@@ -119,7 +121,15 @@ class _HomePageState extends State<HomePage> {
                       DropdownMenuItem(
                           value: 'gb',
                           child: Text('England',
-                              style: TextStyle(fontSize: 18, color: Colors.white)))
+                              style: TextStyle(fontSize: 18, color: Colors.white))),
+                      DropdownMenuItem(
+                          value: 'il',
+                          child: Text('Israel',
+                              style: TextStyle(fontSize: 18, color: Colors.white))),
+                      DropdownMenuItem(
+                          value: 'ae',
+                          child: Text('UAE',
+                              style: TextStyle(fontSize: 18, color: Colors.white))),
                     ],
                     onChanged: (value) => changeCountry(value!),
                   ),

@@ -1,16 +1,36 @@
-# news_app
+# Project Name
 
-A new Flutter project.
+News App
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+News App created using Flutter/Dart and News API for fetching realtime data, having features like top headlines of different countries and search using different keywords.
 
-A few resources to get you started if this is your first Flutter project:
+# Features
+- Top headlines of different countries
+- Search using keywords
+- See in Web View
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots
+![Screenshot 1](screenshots_video/1.jpg)
+Home Page(Top headlines of India)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot 2](screenshots_video/2.jpg)
+Select other countries to see their headlines
+
+![Screenshot 2](screenshots_video/3.jpg)
+Search Page and suggestions
+
+![Screenshot 2](screenshots_video/4.jpg)
+Search Results
+
+![Screenshot 2](screenshots_video/5.jpg)
+Web View
+
+
+<!-- Add more screenshots as needed -->
+
+# Preview
+[![Project Demo](screenshots_video/recording.mp4)](Recording)
+
+*Click above to watch the demo video.*
