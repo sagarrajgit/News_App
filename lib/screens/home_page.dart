@@ -46,9 +46,12 @@ class _HomePageState extends State<HomePage> {
 
   // change dropdown value
   void changeCountry(String newValue) {
-    setState(() {
-      dropDownValue = newValue;
-    });
+    // check input is changed or not
+    if(dropDownValue!=newValue){
+      setState(() {
+        dropDownValue = newValue;
+      });
+    }
   }
 
   @override
