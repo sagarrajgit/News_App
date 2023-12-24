@@ -16,6 +16,8 @@ class BlogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // getting device height and width
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -30,8 +32,10 @@ class BlogTile extends StatelessWidget {
           ),
         );
       },
+
+      // image
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical:8),
+        padding: const EdgeInsets.only(top:5),
         child: Column(
           children: [
             Container(
@@ -46,6 +50,8 @@ class BlogTile extends StatelessWidget {
                 child: Image.network(blogUrlToImage, fit: BoxFit.cover),
               ),
             ),
+
+            // publisher and time of publish
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5),
               child: SizedBox(
@@ -71,6 +77,8 @@ class BlogTile extends StatelessWidget {
                 ),
               ),
             ),
+
+            // title
             SizedBox(
                 width: width * 0.9,
                 child: Text(
@@ -85,7 +93,6 @@ class BlogTile extends StatelessWidget {
                 )),
             Divider(
               thickness: 1,
-              height: 5,
               indent: width * 0.05,
               endIndent: width * 0.05,
             ),

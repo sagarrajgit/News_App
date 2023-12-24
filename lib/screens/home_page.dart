@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Article> news = [];
 
+  // API calling
   Future getNews(String countryName) async {
     news.clear();
 
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     );
     var jsonData = jsonDecode(response.body);
 
+    // If 
     if (jsonData['status'] == 'ok') {
       for (var element in jsonData['articles']) {
         if (element['title'] != null && element['urlToImage'] != null) {
@@ -39,7 +41,10 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  // Initaila value
   String dropDownValue = 'in';
+
+  // change dropdown value
   void changeCountry(String newValue) {
     setState(() {
       dropDownValue = newValue;
@@ -92,6 +97,8 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                       ),
                     ),
+
+                    // dropdown list
                     items: const [
                       DropdownMenuItem(
                           value: 'in',
@@ -129,18 +136,21 @@ class _HomePageState extends State<HomePage> {
             builder: (context, snapshot) {
               //snapshot use to check current request call status
               if (snapshot.connectionState == ConnectionState.done) {
-                return ListView.builder(
-                  itemCount: news.length,
-                  itemBuilder: (context, index) {
-                    // return blog
-                    return BlogTile(
-                      blogName: news[index].name,
-                      blogTitle: news[index].title,
-                      blogUrl: news[index].url,
-                      blogUrlToImage: news[index].urlToImage,
-                      blogPublishedAt: news[index].publishedAt,
-                    );
-                  },
+                return Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: ListView.builder(
+                    itemCount: news.length,
+                    itemBuilder: (context, index) {
+                      // return blog
+                      return BlogTile(
+                        blogName: news[index].name,
+                        blogTitle: news[index].title,
+                        blogUrl: news[index].url,
+                        blogUrlToImage: news[index].urlToImage,
+                        blogPublishedAt: news[index].publishedAt,
+                      );
+                    },
+                  ),
                 );
               }
 

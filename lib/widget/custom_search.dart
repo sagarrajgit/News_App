@@ -3,6 +3,8 @@ import 'package:news_app/screens/search_result.dart';
 import '../model/suggestion_list.dart';
 
 class CustomSearchDelegate extends SearchDelegate<String> {
+
+  // search bar decoration
   @override
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -12,7 +14,21 @@ class CustomSearchDelegate extends SearchDelegate<String> {
         foregroundColor: Colors.white,
       ),
       inputDecorationTheme: InputDecorationTheme(
+        // size of search field
+        constraints: BoxConstraints.loose(
+          const Size.fromWidth(double.maxFinite)
+        ),
+
+        // hint inside search field
+        hintStyle: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.normal),
+        
         contentPadding: const EdgeInsets.all(10),
+        fillColor: Colors.white,
+        filled: true,
+
+        // border
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
             borderSide: const BorderSide(
@@ -21,21 +37,32 @@ class CustomSearchDelegate extends SearchDelegate<String> {
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
             borderSide: const BorderSide(
-              color: Color.fromRGBO(239, 83, 80, 1),
+              color: Color.fromRGBO(109, 109, 109, 1),
             )),
-        fillColor: Colors.white,
-        filled: true,
-        hintStyle: searchFieldStyle ?? theme.inputDecorationTheme.hintStyle,
-        border: InputBorder.none,
       ),
     );
   }
 
+  // leading button
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      splashColor: Colors.white,
+      splashRadius: 25,
+      onPressed: () {
+        close(context, '');
+      },
+      icon: const Icon(Icons.arrow_back),
+    );
+  }
+
+  // actions button
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
         splashColor: Colors.white,
+        splashRadius: 25,
         onPressed: () {
           if (query.isEmpty) {
             close(context, '');
@@ -47,24 +74,17 @@ class CustomSearchDelegate extends SearchDelegate<String> {
     ];
   }
 
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      splashColor: Colors.white,
-      onPressed: () {
-        close(context, '');
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-
+  // search suggestions
   @override
   Widget buildSuggestions(BuildContext context) {
     List<String> matchQuery = [];
 
-    for (final item in searchTerms.reversed) {
-      if (item.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(item);
+    for (final item in suggestions.reversed) {
+      // Storing an string with double quote eg.('"Apple"')
+      // Now removing first and last character
+      String modifiedString = item.substring(1, item.length - 1);
+      if (modifiedString.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(modifiedString);
       }
     }
     return ListView.builder(
@@ -75,16 +95,44 @@ class CustomSearchDelegate extends SearchDelegate<String> {
             query = matchQuery[index];
             showResults(context);
           },
-          title: Text(matchQuery[index]),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  matchQuery[index],
+                  style: const TextStyle(fontSize: 18),
+                  softWrap: true,
+                  maxLines: 5,
+                ),
+              ),
+               IconButton(
+                onPressed: () {
+                  query=matchQuery[index];
+                },
+                icon: const Icon(Icons.arrow_outward_rounded),
+              )
+            ],
+          ),
         );
       },
     );
   }
 
+  // search results
   @override
   Widget buildResults(BuildContext context) {
+    query.trim(); // remove all white spaces from start and end
     if (query.isNotEmpty) {
-      return SearchResult(searchTerm: query);
+
+      // add past searches into the list with double quote
+      if(suggestions.contains('"$query"')){
+        suggestions.remove('"$query"');
+      }
+      suggestions.add('"$query"');
+
+      // Search with double quote
+      return SearchResult(searchTerm: '"$query"');
     } else {
       return const Center(
         child: Row(
@@ -94,4 +142,5 @@ class CustomSearchDelegate extends SearchDelegate<String> {
       );
     }
   }
+  
 }

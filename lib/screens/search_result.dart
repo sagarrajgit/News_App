@@ -12,6 +12,7 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // API calling
     List<Article> news = [];
 
     Future getNews(search) async {
