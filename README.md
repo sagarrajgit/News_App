@@ -12,25 +12,8 @@ News App created using Flutter/Dart and News API for fetching realtime data, hav
 - See in Web View
 
 ## Screenshots
-![Screenshot 1](screenshots_video/1.jpg)
-Home Page(Top headlines of India)
-
-![Screenshot 2](screenshots_video/2.jpg)
-Select other countries to see their headlines
-
-![Screenshot 2](screenshots_video/3.jpg)
-Search Page and suggestions
-
-![Screenshot 2](screenshots_video/4.jpg)
-Search Results
-
-![Screenshot 2](screenshots_video/5.jpg)
-Web View
-
-
-<!-- Add more screenshots as needed -->
-
-# Preview
-[![Project Demo](screenshots_video/recording.mp4)](Recording)
-
-*Click above to watch the demo video.*
+<img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/1.jpg" alt="Home Page" />
+<img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/2.jpg" alt="Country List"/>
+<img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/3.jpg" alt="Search Screen"/>
+<img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/4.jpg" alt="Search Results"/>
+<img height="450px" src="https://github.com/sagarrajgit/News_App/blob/main/screenshots_video/5.jpg" alt="Web View" />
